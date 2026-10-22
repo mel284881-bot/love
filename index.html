@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Для тебя</title>
-<!-- Подключаем красивые шрифты -->
+<title>Письмо</title>
 <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,7 +22,7 @@
     overflow-x: hidden;
   }
 
-  /* --- ЭКРАН 1: КОНВЕРТ --- */
+  /* Экран 1 */
   #screen1 {
     display: flex;
     flex-direction: column;
@@ -51,13 +50,12 @@
   .envelope {
     width: 100%;
     height: 100%;
-    background: #e8e2d6; /* Цвет пергамента */
+    background: #e8e2d6;
     border-radius: 4px;
     position: relative;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.05);
   }
   
-  /* Клапан конверта */
   .envelope::before {
     content: '';
     position: absolute;
@@ -76,7 +74,6 @@
     z-index: 0;
   }
 
-  /* Текст на конверте */
   .envelope-text {
     position: absolute;
     bottom: 20px;
@@ -97,7 +94,6 @@
     opacity: 0.5;
   }
 
-  /* Сургучная печать */
   .wax-seal {
     position: absolute;
     top: 65px; left: 50%;
@@ -129,7 +125,7 @@
     50% { opacity: 1; }
   }
 
-  /* --- ЭКРАН 2: ПИСЬМО --- */
+  /* Экран 2 */
   #screen2 {
     display: none;
     width: 100%;
@@ -145,8 +141,7 @@
   }
 
   .paper {
-    background: #f4efe6; /* Пергамент */
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); /* Легкая текстура */
+    background: #f4efe6;
     border-radius: 8px;
     padding: 40px 30px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 0 30px rgba(0,0,0,0.05);
@@ -184,7 +179,6 @@
     margin-top: 30px;
   }
 
-  /* Кнопки под письмом */
   .action-buttons {
     display: flex;
     gap: 15px;
@@ -212,7 +206,7 @@
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233,30,99,0.6); }
 
-  /* --- СЕКРЕТНАЯ ЧАСТЬ С ФОТО --- */
+  /* Секретная часть */
   #secretPhoto {
     display: none;
     margin-top: 30px;
@@ -248,12 +242,10 @@
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1) rotate(-2deg); }
   }
-
 </style>
 </head>
 <body>
 
-  <!-- ЭКРАН 1: КОНВЕРТ -->
   <div id="screen1">
     <div class="envelope-container" onclick="openLetter()">
       <div class="envelope" id="envelope">
@@ -264,7 +256,6 @@
     <div class="hint-text">Откроешь мою душу?</div>
   </div>
 
-  <!-- ЭКРАН 2: ПИСЬМО -->
   <div id="screen2">
     <div class="paper">
       <div class="letter-header">Это тебе, любимая моя</div>
@@ -283,11 +274,9 @@
       <button class="btn btn-primary" onclick="showSecret()">Хочешь увидеть то, что у меня в сердце?</button>
     </div>
 
-    <!-- Секретная часть с фото -->
     <div id="secretPhoto">
       <div class="photo-frame">
-        <!-- Твое фото -->
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAGQAZADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABAECAwUGAAcI/8QAThAAAQMDAwIEAwQGBgYHBgcAAQIDBAAFEQYSITEHQRNRYSJxgQgUMpGhFSNCscHRFiQzUmLhF0NygpLw8SRTY3OissLSNURUg5PC0+L/xAAaAQADAQEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgIBBAEDAwMEAwEAAAAAAAECEQMEEiExQQUTUSJhcRQygQYjkaGxweH/2gAMAwEAAhEDEQA/AJKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z" alt="Мое сердце" />
+        <img src="photo.jpg" alt="Фото" />
         <div class="photo-caption">Ты у меня в сердце.</div>
       </div>
     </div>
@@ -295,18 +284,15 @@
 
 <script>
   function openLetter() {
-    const envelope = document.getElementById('envelope');
-    envelope.classList.add('open');
-    
-    // Ждем, пока открывается конверт, и переключаем экраны
-    setTimeout(() => {
+    document.getElementById('envelope').classList.add('open');
+    setTimeout(function() {
       document.getElementById('screen1').classList.add('hide');
       document.getElementById('screen2').classList.add('show');
     }, 600);
   }
 
   function showSecret() {
-    const secret = document.getElementById('secretPhoto');
+    var secret = document.getElementById('secretPhoto');
     secret.classList.add('show');
     secret.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
