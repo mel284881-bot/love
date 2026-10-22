@@ -23,15 +23,22 @@
     position: relative;
   }
 
-  /* Парящие сердечки на фоне */
+  /* Парящие сердечки на чистом CSS */
   .floating-hearts {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 0; overflow: hidden;
   }
   .heart-bg {
-    position: absolute; bottom: -50px; color: rgba(255, 123, 156, 0.15);
-    font-size: 1.5rem; animation: floatUp 10s linear infinite;
+    position: absolute; bottom: -50px; color: rgba(255, 123, 156, 0.2);
+    animation: floatUp 10s linear infinite;
   }
+  /* Создаем 5 сердец через CSS, без скриптов */
+  .heart-bg:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; font-size: 2rem; }
+  .heart-bg:nth-child(2) { left: 30%; animation-duration: 12s; animation-delay: 2s; font-size: 1.5rem; }
+  .heart-bg:nth-child(3) { left: 55%; animation-duration: 9s; animation-delay: 4s; font-size: 2.5rem; }
+  .heart-bg:nth-child(4) { left: 75%; animation-duration: 11s; animation-delay: 1s; font-size: 1.8rem; }
+  .heart-bg:nth-child(5) { left: 90%; animation-duration: 10s; animation-delay: 5s; font-size: 2rem; }
+
   @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
@@ -175,7 +182,14 @@
 </head>
 <body>
 
-  <div class="floating-hearts" id="heartsBg"></div>
+  <!-- Сердечки на фоне (созданы через CSS) -->
+  <div class="floating-hearts">
+    <div class="heart-bg">❤️</div>
+    <div class="heart-bg">💖</div>
+    <div class="heart-bg">💕</div>
+    <div class="heart-bg">💘</div>
+    <div class="heart-bg">🌸</div>
+  </div>
 
   <div id="screen1">
     <div class="envelope-container" onclick="openLetter()">
@@ -215,23 +229,6 @@
   </div>
 
 <script>
-  // Ждем полной загрузки страницы, чтобы сердечки точно появились
-  window.onload = function() {
-    const heartsBg = document.getElementById('heartsBg');
-    const emojis = ['❤️', '💖', '💕', '💘', '🌸'];
-    
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart-bg';
-      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (6 + Math.random() * 8) + 's';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
-      heartsBg.appendChild(heart);
-    }
-  };
-
   function openLetter() {
     document.getElementById('envelope').classList.add('open');
     setTimeout(function() {
@@ -248,5 +245,3 @@
 </script>
 </body>
 </html>
-
-     
